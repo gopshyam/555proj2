@@ -111,8 +111,8 @@ class Tutorial (object):
       msg = of.ofp_flow_mod()
       #
       ## Set fields to match received packet
-      #msg.match = of.ofp_match.from_packet(packet)
-      msg.match.dl_dst = packet.dst
+      msg.match = of.ofp_match.from_packet(packet)
+      #msg.match.dl_dst = packet.dst
       msg.actions.append(of.ofp_action_output(port = self.mac_to_port[packet.dst]))
       self.connection.send(msg)
       #
